@@ -42,7 +42,7 @@
         .container {
             max-width: 700px;
             width: 100%;
-            max-height: 80vh;
+            max-height: 45vh;
             padding: 80px 100px;
             border: none;
             border-radius: 0px;
@@ -86,15 +86,21 @@
             width: 100%;
             padding: 8px;
             border: none;
-            border-bottom: 1px solid #444;
+            border-bottom: 1px solid #172e43;
             border-radius: 0px;
             font-weight: 400;
             margin: 10px 0 30px 0;
-            background-color: #151515;
+            background-color: #16324A;
             color: #e0e0e0;
         }
         input[type="text"]:focus, input[type="email"]:focus, textarea:focus { outline: none; border-bottom: 1px solid #e0e0e0; }
 
+		input::placeholder,
+		textarea::placeholder {
+		  color: #ffffff;
+		  opacity: 0.3; /* deixa levemente translúcido */
+		}
+		
         .option-group { display: grid; gap: 8px; }
         .inline-option { display: inline-flex; align-items: center; gap: 8px; margin-right: 12px; }
 
