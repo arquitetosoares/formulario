@@ -1,296 +1,482 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Briefing de Identidade Visual | Nícolas Neves</title>
+  <title>Pré-Briefing de Interiores</title>
+  <meta name="description" content="Formulário rápido para dar os primeiros passos no seu projeto de interiores.">
 
-<meta name="description" content="Preencha o formulário e inicie a criação da identidade visual da sua marca. Um processo guiado, pessoal e estratégico com Nícolas Neves.">
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  
+  <style>
+        body {
+            font-family: 'Barlow', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100svh;
+            margin: 0;
+            background-color: #1C3F5D;
+            color: #e0e0e0;
+            overflow: auto;
+            position: relative;
+        }
 
-<meta name="keywords" content="formulário de identidade visual, briefing design, nícolas neves, criação de marca, design estratégico, iniciar projeto, identidade visual profissional">
+        .background-image {
+            position: fixed;
+            top: 50%;
+            width: 17%;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
 
-<meta property="og:title" content="Briefing de Identidade Visual | Nícolas Neves" />
-<meta property="og:description" content="Comece seu projeto de identidade visual com Nícolas Neves. Um formulário leve, estratégico e personalizado para entender sua marca desde o início." />
-<meta property="og:image" content="https://nicolasneves.com.br/capas/nicolas-neves.png" />
-<meta property="og:url" content="https://nicolasneves.com.br/formulario.html" />
-<meta property="og:type" content="website" />
+        .background-left { left: 0; }
+        .background-right { right: 0; }
 
-    
-  	<link rel="icon" type="image/png" sizes="16x16"  href="https://nicolasneves.com.br/favicons/favicon-16x16.png">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="theme-color" content="#ffffff">
-    <!-- Link para a fonte Space Grotesk -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-	<link href="style-formulario.css" rel="stylesheet" />
+        .container {
+            max-width: 700px;
+            width: 100%;
+            max-height: 80vh;
+            padding: 80px 100px;
+            border: none;
+            border-radius: 0px;
+            text-align: left;
+            background-color: #1C3F5D;
+            color: #e0e0e0;
+            display: none;
+            z-index: 1;
+            overflow-y: auto;
+        }
+
+        .container.visible { display: block; }
+
+        h2 {
+            font-weight: 700;
+            margin: 0px 0px 40px 0px;
+            text-align: center;
+            color: #e0e0e0;
+        }
+
+        p, label {
+            font-weight: 400;
+            color: #e9e9e9;
+            display: block;
+        }
+
+        form#form-stage4 > div { margin: 10px 0 30px 0; }
+        form#form-stage4 > div > label { line-height: 1.5; }
+        form#form-stage3 > div { margin-top: 10px; }
+        form#form-stage5 > div { margin-top: 10px; }
+        form#form-stage5 > div > label { line-height: 1.5; }
+        form#form-stage3 > div > label { margin-bottom: 3px; }
+        form#form-stage2 > div { margin-bottom: 20px; }
+        form#form-stage2 > div > label { padding-top: 10px; font-weight: 400; }
+        form > button { margin-top: 20px; }
+
+        label { font-weight: 500; }
+        .subtext { font-weight: 100; font-style: italic; margin: 0 0 8px 0; color: #a0a0a0; }
+
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-bottom: 1px solid #444;
+            border-radius: 0px;
+            font-weight: 400;
+            margin: 10px 0 30px 0;
+            background-color: #151515;
+            color: #e0e0e0;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus { outline: none; border-bottom: 1px solid #e0e0e0; }
+
+        .option-group { display: grid; gap: 8px; }
+        .inline-option { display: inline-flex; align-items: center; gap: 8px; margin-right: 12px; }
+
+        button {
+            padding: 10px 30px;
+            width: auto;
+            border: 1px solid #172e43;
+            background-color: #16324A;
+            color: #e0e0e0;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 30px;
+            font-weight: 500;
+            display: block;
+            margin: 0 auto;
+        }
+        button:hover { background-color: #112334; }
+
+        .bottom-image {
+            position: fixed;
+            bottom: 4%;
+            width: 260px;
+            filter: brightness(0) invert(1);
+        }
+
+        div#welcome-screen > h2 { font-size: 35px; font-weight: 600;}
+        div#box6 > h2 { font-size: 35px; }
+        div#box6 > p { margin: 0; }
+        a { color: #1e90ff; }
+        a:hover { color: #63a4ff; }
+        div#box6 > p > a { color: #333; }		
+        div#box6 > button { margin-top: 30px; }
+
+        #welcome-screen > h2 > i { font-weight: 200; }
+        #welcome-screen > button { margin-top: 40px; }
+        #welcome-screen p {
+			line-height: 1.5;
+			letter-spacing: 0.5px;
+			font-size: 18px;
+			text-align: center;
+		}
+
+        .logo-link a { display: flex; justify-content: center; }
+
+        :root { --vh: 100%; }
+        body { height: calc(var(--vh, 1vh) * 100); }
+			
+        @media (max-width: 768px) {
+            body { padding: 0 16px; }
+            .container { padding: 16px; }
+            .container {
+                max-width: 70%;
+                padding: 0px 20px;
+                background-color: unset;
+                box-shadow: none;
+                margin-top: 0;
+            }
+            input[type="text"], input[type="email"], textarea { background-color: #121212; }
+            .background-image { width: 200px; opacity: 0; }
+            .bottom-image { width: 150px; bottom: 5%; }
+            h2 { font-size: 24px; margin-bottom: 30px; }
+            div#welcome-screen > h2 { font-size: 30px; }
+            p, label { font-size: 14px; }
+            button { padding: 10px 20px; font-size: 14px; margin-top: 30px; }
+            .nav-button { width: 30px; height: 30px; bottom: 10px; opacity: 0.8; border-radius: 0px; }
+            .up-button { right: 50px; }
+            .down-button { right: 10px; }
+        }
+  </style>
 </head>
 <body>
 
 <!-- Imagens de fundo -->
-<img src="https://i.imgur.com/IEMj3Hr.png" alt="Imagem lateral esquerda" class="background-image background-left">
-<img src="https://i.imgur.com/ETrGBo4.png" alt="Imagem lateral direita" class="background-image background-right">
+<img src="https://arquitetosoares.github.io/formulario/Esquerda.svg" alt="Decor esquerda" class="background-image background-left">
+<img src="https://arquitetosoares.github.io/formulario/Direita.svg" alt="Decor direita" class="background-image background-right">
 
-<!-- Imagem fixa na parte inferior -->
-<div class="logo-link"><a href="https://nicolasneves.com.br" target="_blank"><img src="https://nicolasneves.com.br/Logo.svg" alt="Imagem inferior" class="bottom-image"></a></div>
-<!-- Tela inicial de boas-vindas -->
+<!-- Logo inferior -->
+<div class="logo-link"><a href="#"><img src="https://arquitetosoares.github.io/formulario/Logo-MS.svg" alt="Logo inferior" class="bottom-image"></a></div>
+
+<!-- Tela inicial -->
 <div id="welcome-screen" class="container visible">
-    <h2>Opa, Nícolas aqui. <i>Tudo certo?</i></h2>
-    <p>Seu projeto começa agora! Através deste formulário, daremos os primeiros passos na criação da <b>Identidade Visual</b> do seu negócio. Cada resposta me ajudará a construir algo único e marcante para sua marca.</p>
-    <button onclick="showNextBox('box1')">Iniciar</button>
+  <h2>Olá, seja bem-vindo! <i>Vamos começar?</i></h2>
+  <p>Este <b>briefing</b> é o primeiro passo para criarmos um projeto com a sua cara. Suas respostas vão nos ajudar a entender seus desejos, necessidades e estilo, para que juntos possamos construir um espaço único e cheio de significado.</p>
+  <button onclick="showNextBox('box1')">Começar</button>
 </div>
 
-<!-- Primeira etapa -->
+<!-- 1. Dados básicos -->
 <div id="box1" class="container">
-    <h2>Primeiro, quero conhecer você melhor.</h2>
-    <form id="form-stage1">
-        <label>Como posso te chamar?</label>
-        <input type="text" placeholder="Seu nome" name="user_name" id="user_name" required>
+  <h2>Primeiro, seus dados básicos</h2>
+  <form id="form-stage1">
+    <label>Qual o seu nome?</label>
+    <input type="text" name="user_name" placeholder="Seu nome" required>
 
-        <label>Se desejar, pode deixar seu Instagram para que eu possa te encontrar.</label>
-        <input type="text" placeholder="@user" name="user_instagram">
+    <label>Pode me passar um e-mail e WhatsApp pra contato?</label>
+    <input type="email" name="user_email" placeholder="email@email.com" required>
+    <input type="text" name="user_phone" placeholder="(DDD) 99999-9999" required>
 
-        <button type="button" id="next-stage1" onclick="checkStage1()">Próxima Etapa</button>
-    </form>
+    <label>Onde fica o imóvel que vamos trabalhar? (cidade/bairro já ajuda)</label>
+    <input type="text" name="project_address" placeholder="Cidade / Bairro">
+    <button type="button" onclick="showNextBox('box2')">Próxima Etapa</button>
+  </form>
 </div>
 
-<!-- Segunda etapa -->
-<!-- Segunda etapa -->
+<!-- 2. Sobre o projeto -->
 <div id="box2" class="container">
-    <h2>É um prazer te conhecer!</h2>
-    <form id="form-stage2">
-        <label>Qual seu número para que eu possa entrar em contato?</label>
-        <input type="text" placeholder="DDD + Número" name="user_phone" required>
+  <h2>Legal! Agora quero entender o motivo dessa transformação ✨</h2>
+  <form id="form-stage2">
+    <label>Por que você decidiu reformar ou decorar agora?</label>
+    <div class="option-group">
+      <label class="inline-option"><input type="radio" name="project_reason" value="Quero modernizar"> Quero modernizar</label>
+      <label class="inline-option"><input type="radio" name="project_reason" value="Quero mais funcionalidade"> Quero mais funcionalidade</label>
+      <label class="inline-option"><input type="radio" name="project_reason" value="Quero deixar mais bonito"> Quero deixar mais bonito</label>
+      <label class="inline-option"><input type="radio" name="project_reason" value="Outro motivo"> Outro motivo</label>
+      <input type="text" id="project_reason_other" name="project_reason_other" placeholder="Qual?" style="display:none;">
+    </div>
 
-        <label>Se possível também pode deixar seu e-mail principal.</label>
-        <input type="email" placeholder="email@email" name="user_email">
-		
-        <button type="button" onclick="showNextBox('box3')">Próxima Etapa</button>
-    </form>
+    <label>E quais os ambientes que você sonha transformar primeiro?</label>
+    <div class="option-group">
+      <label class="inline-option"><input type="checkbox" name="project_rooms" value="Sala de Estar"> Sala de Estar</label>
+      <label class="inline-option"><input type="checkbox" name="project_rooms" value="Sala de Jantar"> Sala de Jantar</label>
+      <label class="inline-option"><input type="checkbox" name="project_rooms" value="Cozinha"> Cozinha</label>
+      <label class="inline-option"><input type="checkbox" name="project_rooms" value="Quartos"> Quartos</label>
+      <label class="inline-option"><input type="checkbox" name="project_rooms" value="Banheiros"> Banheiros</label>
+      <label class="inline-option"><input type="checkbox" name="project_rooms" value="Área Gourmet / Varanda"> Área Gourmet / Varanda</label>
+      <label class="inline-option"><input type="checkbox" name="project_rooms" value="Outros"> Outros</label>
+      <input type="text" id="project_rooms_other" name="project_rooms_outros" placeholder="Quais?" style="display:none;">
+    </div>
+
+    <label>Se tivesse que escolher UMA coisa que não pode faltar, qual seria?</label>
+    <textarea name="must_have" placeholder=""></textarea>
+
+    <label>E o que você definitivamente não quer no seu projeto?</label>
+    <textarea name="must_not_have" placeholder=""></textarea>
+
+    <button type="button" onclick="showNextBox('box3')">Próxima Etapa</button>
+  </form>
 </div>
 
-
-<!-- Terceira etapa -->
+<!-- 3. Estilo e inspirações -->
 <div id="box3" class="container">
-    <h2>Agora, me fale mais sobre a sua marca.</h2>
-    <form id="form-stage3">
-        <label>Para começarmos, qual é o nome da empresa?</label>
-        <input type="text" name="company_name" required>
+  <h2>Show! Vamos falar de estilo 🎨</h2>
+  <form id="form-stage3">
+    <label>Olhe essas opções de estilos (vou colocar imagens no formulário depois) e me diga com quais você mais se identifica:</label>
+    <div class="option-group">
+      <label class="inline-option"><input type="checkbox" name="style" value="Moderno / Minimalista"> Moderno / Minimalista</label>
+      <label class="inline-option"><input type="checkbox" name="style" value="Clássico / Sofisticado"> Clássico / Sofisticado</label>
+      <label class="inline-option"><input type="checkbox" name="style" value="Industrial / Urbano"> Industrial / Urbano</label>
+      <label class="inline-option"><input type="checkbox" name="style" value="Rústico / Aconchegante"> Rústico / Aconchegante</label>
+      <label class="inline-option"><input type="checkbox" name="style" value="Escandinavo / Neutro"> Escandinavo / Neutro</label>
+      <label class="inline-option"><input type="checkbox" name="style" value="Colorido / Criativo"> Colorido / Criativo</label>
+      <label class="inline-option"><input type="checkbox" name="style" value="Outro"> Outro</label>
+      <input type="text" id="style_other" name="style_outro" placeholder="Qual?" style="display:none;">
+    </div>
 
-        <label>Em quais redes sociais ela está presente?</label>
-        <p class="subtext">(Instagram, LinkedIn, Youtube). Se possível deixar o link.</p>
-		<input type="text" name="company_social_media">
+    <label>Prefere ambientes mais claros e neutros, mais escuros e intimistas, ou coloridos e vibrantes?</label>
+    <div class="option-group">
+      <label class="inline-option"><input type="radio" name="colors_pref" value="Claros e neutros"> Claros e neutros</label>
+      <label class="inline-option"><input type="radio" name="colors_pref" value="Escuros e intimistas"> Escuros e intimistas</label>
+      <label class="inline-option"><input type="radio" name="colors_pref" value="Coloridos e vibrantes"> Coloridos e vibrantes</label>
+    </div>
 
-        <label>Em qual segmento ela está inserida?</label>
-        <input type="text" placeholder="Área de atuação" name="company_segment">
+    <label>Tem alguma cor que você ama? E alguma que você não suporta?</label>
+    <textarea name="colors_likes_dislikes" placeholder=""></textarea>
 
-        <label>Quais produtos ou serviços sua empresa oferece?</label>
-        <p class="subtext">Se possível, explicar como funciona o modelo de negócio.</p>
-		<textarea name="company_services"></textarea>
+    <p class="subtext">Ah, se já tiver imagens de referência, depois você me manda pelo WhatsApp, combinado? 📲</p>
 
-        <label>Quanto tempo de mercado sua empresa tem?</label>
-        <div required>
-		    <label><input type="radio" name="company_market_time" value="Ainda irei começar" required> Ainda irei começar</label>
-			<label><input type="radio" name="company_market_time" value="1-2 anos" > 1-2 anos</label>
-			<label><input type="radio" name="company_market_time" value="3-4 anos" > 3-4 anos</label>
-			<label><input type="radio" name="company_market_time" value="+ de 5 anos" > + de 5 anos</label>
-        </div>
-
-        <button type="button" onclick="showNextBox('box4')">Próxima Etapa</button>
-    </form>
+    <button type="button" onclick="showNextBox('box4')">Próxima Etapa</button>
+  </form>
 </div>
 
-<!-- Quarta etapa -->
+<!-- 4. Rotina no espaço + móveis -->
 <div id="box4" class="container">
-    <h2>Obrigado pela atenção! Agora, apenas algumas informações para seu orçamento.</h2>
-    <form id="form-stage4">
-        <label>Você tem disponibilidade para participar de uma reunião em vídeo chamada?</label>
-        <div>
-            <label><input type="radio" name="meeting_availability" value="Sim">Sim</label>
-            <label><input type="radio" name="meeting_availability" value="Não">Não</label>
-        </div>
+  <h2>Sua rotina no espaço 🏡</h2>
+  <form id="form-stage4">
+    <label>Quantas pessoas moram na casa? (pode colocar as idades, ajuda bastante!)</label>
+    <textarea name="residents"></textarea>
 
-        <label>Qual a sua urgência para esse projeto?</label>
-        <div>
-            <label><input type="radio" name="project_urgency" value="1 mês">1 mês</label>
-            <label><input type="radio" name="project_urgency" value="2 a 3 meses">2 a 3 meses</label>
-            <label><input type="radio" name="project_urgency" value="Não tenho pressa">Não tenho pressa</label>
-        </div>
+    <label>Tem pets? Se sim, quais?</label>
+    <textarea name="pets"></textarea>
 
-        <label>Qual a sua estimativa de investimento para esse projeto?</label>
-		<p class="subtext">(Independente da escolha, iremos facilitar a forma de pagamento para que se adeque ao seu momento.</p>
-        <div>
-            <label><input type="radio" name="project_investment" value="Até R$1 mil">Até R$1 mil</label>
-			<label><input type="radio" name="project_investment" value="R$1 mil - R$3 mil">R$1 mil - R$3 mil</label>
-            <label><input type="radio" name="project_investment" value="R$3 mil - R$5 mil">R$3 mil - R$5 mil</label>
-            <label><input type="radio" name="project_investment" value="+ R$5 mil">+ R$5 mil</option>
-        </div>
+    <label>Vocês costumam receber visitas com frequência?</label>
+    <div class="option-group">
+      <label class="inline-option"><input type="radio" name="guests" value="Sim"> Sim</label>
+      <label class="inline-option"><input type="radio" name="guests" value="Não"> Não</label>
+    </div>
 
-        <button type="button" onclick="showNextBox('box5')">Próxima Etapa</button>
-    </form>
+    <label>O que rola mais no dia a dia da casa?</label>
+    <div class="option-group">
+      <label class="inline-option"><input type="checkbox" name="activities" value="Assistir TV"> Assistir TV</label>
+      <label class="inline-option"><input type="checkbox" name="activities" value="Receber amigos"> Receber amigos</label>
+      <label class="inline-option"><input type="checkbox" name="activities" value="Trabalhar em casa"> Trabalhar em casa</label>
+      <label class="inline-option"><input type="checkbox" name="activities" value="Estudar"> Estudar</label>
+      <label class="inline-option"><input type="checkbox" name="activities" value="Outros"> Outros</label>
+      <input type="text" id="activities_other" name="activities_outros" placeholder="Quais?" style="display:none;">
+    </div>
+
+    <h3 style="text-align:center;margin-top:20px;color:#e0e0e0;">🪑 Sobre móveis que já existem</h3>
+    <label>Me conta: você pretende aproveitar algum móvel que já tem no espaço atual?</label>
+    <div class="option-group">
+      <label class="inline-option"><input type="radio" name="keep_furniture" value="Sim, quero aproveitar alguns móveis"> Sim, quero aproveitar alguns móveis</label>
+      <label class="inline-option"><input type="radio" name="keep_furniture" value="Não, quero tudo novo"> Não, quero tudo novo</label>
+      <label class="inline-option"><input type="radio" name="keep_furniture" value="Ainda não sei, podemos avaliar juntos"> Ainda não sei, podemos avaliar juntos</label>
+    </div>
+
+    <div id="indispensable_furniture_group" style="display:none;">
+      <label>Se sim, quais móveis são indispensáveis e precisam ser mantidos no projeto? ✍️</label>
+      <textarea name="indispensable_furniture"></textarea>
+    </div>
+
+    <button type="button" onclick="showNextBox('box5')">Próxima Etapa</button>
+  </form>
 </div>
 
-<!-- Quinta etapa -->
+<!-- 5. Investimento e prazo -->
 <div id="box5" class="container">
-    <h2>Já estamos no fim. Mas antes...</h2>
-    <form id="form-stage5">
+  <h2>Dinheiro e prazo 💰</h2>
+  <form id="form-stage5">
+    <label>Tem ideia de quando pretende começar o projeto?</label>
+    <input type="text" name="start_date" placeholder="Mês/Ano">
 
-        <label>Fique à vontade para falar mais sobre a sua marca ou deixar alguma observação que considere importante.</label>
-        <textarea name="additional_notes"></textarea>
+    <label>Existe alguma data limite (ex: mudança, evento, etc.)?</label>
+    <input type="text" name="deadline" placeholder="Descreva aqui">
 
-        <label>Última pergunta: como me encontrou?</label>
-        <div>
-            <label><input type="radio" name="find_info" value="Indicação">Indicação</label>
-            <label><input type="radio" name="find_info" value="Behance">Behance</label>
-            <label><input type="radio" name="find_info" value="Instagram">Instagram</option>
-			<label><input type="radio" name="find_info" value="Site / Google">Site / Google</option>
-			<label><input type="radio" name="find_info" value="Outros">Outros</option>
-        </div>
+    <label>Pensando no investimento, você diria que está buscando algo mais:</label>
+    <div class="option-group">
+      <label class="inline-option"><input type="radio" name="budget" value="Econômico"> Econômico</label>
+      <label class="inline-option"><input type="radio" name="budget" value="Intermediário"> Intermediário</label>
+      <label class="inline-option"><input type="radio" name="budget" value="Alto padrão"> Alto padrão</label>
+    </div>
 
-        <button type="button" onclick="sendEmail()">Finalizar</button>
-    </form>
+    <button type="button" onclick="showNextBox('box5b')">Próxima Etapa</button>
+  </form>
+</div>
+
+<!-- 6. Disponibilidade para reunião -->
+<div id="box5b" class="container">
+  <h2>🤝 Bora alinhar juntos?</h2>
+  <form id="form-stage5b">
+    <label>Você teria disponibilidade para uma reunião online com um dos nossos arquitetos para alinharmos esse briefing?</label>
+    <div class="option-group">
+      <label class="inline-option"><input type="radio" name="meeting" value="Sim, com certeza"> Sim, com certeza</label>
+      <label class="inline-option"><input type="radio" name="meeting" value="Talvez, dependendo do horário"> Talvez, dependendo do horário</label>
+      <label class="inline-option"><input type="radio" name="meeting" value="Prefiro alinhar só por mensagens"> Prefiro alinhar só por mensagens</label>
+    </div>
+    <button type="button" onclick="showNextBox('box6')">Próxima Etapa</button>
+  </form>
+</div>
+
+<!-- 7. Observações finais -->
+<div id="box6" class="container">
+  <h2>Pra fechar… ✍️</h2>
+  <form id="form-stage6">
+    <label>Aqui é o espaço livre pra você colocar qualquer comentário ou detalhe que ache importante. Pode ser um desejo especial, uma preocupação, ou até uma ideia que surgiu agora.</label>
+    <textarea name="observations"></textarea>
+
+    <button type="button" onclick="sendEmail()">Finalizar</button>
+  </form>
 </div>
 
 <!-- Tela final -->
-<div id="box6" class="container" style="text-align: center;">
-    <h2>Uffa! Acabamos!</h2>
-    <p>Muito obrigado pelas respostas.</p>
-	<p>Retornarei em breve com seu orçamento.</p>
-    <p style="padding: 15px 0;">Nícolas Neves</p>
-    <p><a href="https://www.instagram.com/nicolasneves.dg/" target="_blank">https://www.instagram.com/nicolasneves.dg/</a></p>
-    <p><a href="mailto:onicolasneves@gmail.com" rel="noopener noreferrer" target="_blank">onicolasneves@gmail.com</a></p>
-    <p>21 98823-3083</p>
-    <button onclick="showNextBox('welcome-screen')">Voltar ao Início</button>
+<div id="box7" class="container" style="text-align: center;">
+  <h2>Uhuu! 🎉</h2>
+  <p>Obrigado por compartilhar todas as informações.</p>
+  <p>Em breve vamos entrar em contato para os próximos passos.</p>
+  <button onclick="showNextBox('welcome-screen')">Voltar ao Início</button>
 </div>
-
-<!-- Botões de navegação -->
-<button class="nav-button up-button" onclick="navigate(-1)" disabled>↑</button>
-<button class="nav-button down-button" onclick="navigate(1)" disabled>↓</button>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">
-
-    (function() {
-        emailjs.init({
-            publicKey: "30ExYEmkHsvuz-0RK",
-        });
-    })();
-
-    let currentBox = 0; // Inicializa na tela de boas-vindas
-    const boxes = ['box1', 'box2', 'box3', 'box4', 'box5', 'box6', 'welcome-screen'];
-    const upButton = document.querySelector('.up-button');
-    const downButton = document.querySelector('.down-button');
-
-    function updateNavButtons() {
-        // Atualiza o estado dos botões
-        upButton.disabled = currentBox === 0;
-        downButton.disabled = currentBox === boxes.length - 1;
-
-        // Verifica se estamos em uma etapa onde podemos avançar
-        if (currentBox < boxes.length - 1) {
-            const currentForm = document.getElementById(boxes[currentBox]).querySelector('form');
-            downButton.disabled = !currentForm.checkValidity(); // Desabilita se o formulário não for válido
-        }
-
-        // Atualiza a aparência dos botões
-        upButton.classList.toggle('active', !upButton.disabled);
-        downButton.classList.toggle('active', !downButton.disabled);
-    }
-
-    function checkStage1() {
-        const currentForm = document.getElementById('form-stage1');
-        if (currentForm.checkValidity()) {
-            showNextBox('box2');
-        } else {
-            currentForm.reportValidity(); // Exibe mensagens de validação se necessário
-        }
-    }
-
-    function showNextBox(nextBoxId) {
-        const currentForm = document.getElementById(boxes[currentBox]).querySelector('form');
-        
-        // Para telas que não são de formulário, permite avançar
-        if (currentBox === 0 || currentBox === boxes.length - 1) {
-            // Atualiza a caixa atual
-            document.querySelectorAll('.container').forEach(box => {
-                box.classList.remove('visible');
-            });
-            document.getElementById(nextBoxId).classList.add('visible');
-            currentBox = boxes.indexOf(nextBoxId); // Atualiza o índice atual
-            updateNavButtons(); // Atualiza o estado dos botões de navegação
-            return;
-        }
-
-        // Verifica se o formulário atual é válido antes de avançar
-        if (currentForm && !currentForm.checkValidity()) {
-            currentForm.reportValidity(); // Exibe mensagens de validação se necessário
-            return; // Impede a navegação
-        }
-
-        // Atualiza a caixa atual
-        document.querySelectorAll('.container').forEach(box => {
-            box.classList.remove('visible');
-        });
-        document.getElementById(nextBoxId).classList.add('visible');
-        currentBox = boxes.indexOf(nextBoxId); // Atualiza o índice atual
-        updateNavButtons(); // Atualiza o estado dos botões de navegação
-		
-		
-    }
-
-    function navigate(direction) {
-        const nextBoxId = boxes[currentBox + direction];
-        if (nextBoxId) {
-            showNextBox(nextBoxId);
-        }
-    }
-
-function sendEmail() {
-    // Inicializa um objeto para armazenar todos os dados do formulário
-    const data = {};
-
-    // Percorre cada formulário e adiciona as respostas ao objeto data
-    for (let i = 1; i <= 5; i++) {
-        const currentForm = document.getElementById(`form-stage${i}`);
-        const formData = new FormData(currentForm);
-
-        // Processa cada entrada do formulário
-        for (let [key, value] of formData.entries()) {
-            if (key === 'additional_services') {
-                // Se já existir uma entrada para additional_services, adiciona mais um valor
-                if (data[key]) {
-                    data[key] += `, ${value}`;
-                } else {
-                    data[key] = value;
-                }
-            } else {
-                data[key] = value;
-            }
-        }
-    }
-
-    // Enviar email com todos os dados coletados
-    emailjs.send('service_u2ejyh4', 'template_se6dfqn', data)
-        .then(() => {
-            showNextBox('box6'); // Avança para a tela final
-        }, (error) => {
-            console.error('Erro ao enviar email:', error);
-        });
-}
-
+(function() {
+  emailjs.init({ publicKey: "SUA_PUBLIC_KEY" });
+})();
 </script>
 
 <script>
-  function adjustVH() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  let currentBox = 0;
+  const boxes = ['box1','box2','box3','box4','box5','box5b','box6','box7','welcome-screen'];
+
+  function showNextBox(nextBoxId) {
+    document.querySelectorAll('.container').forEach(box => box.classList.remove('visible'));
+    document.getElementById(nextBoxId).classList.add('visible');
+    currentBox = boxes.indexOf(nextBoxId);
   }
-  window.addEventListener('resize', adjustVH);
-  adjustVH();
+
+  function navigate(direction) {
+    const nextBoxId = boxes[currentBox + direction];
+    if (nextBoxId) showNextBox(nextBoxId);
+  }
+
+  // helpers para mostrar "outro"/condicionais
+  function toggleDisplay(inputName, expectedValue, targetId) {
+    const inputs = document.querySelectorAll(`input[name="${inputName}"]`);
+    const target = document.getElementById(targetId);
+    inputs.forEach(inp => {
+      inp.addEventListener('change', () => {
+        const isSelected = inp.type === 'radio'
+          ? document.querySelector(`input[name="${inputName}"]:checked`)?.value === expectedValue
+          : Array.from(document.querySelectorAll(`input[name="${inputName}"]:checked`)).some(i => i.value === expectedValue);
+        target.style.display = isSelected ? 'block' : 'none';
+        if (!isSelected) target.value = '';
+      });
+    });
+  }
+
+  function toggleByCheckboxGroup(inputName, expectedValue, targetId) {
+    const inputs = document.querySelectorAll(`input[name="${inputName}"]`);
+    const target = document.getElementById(targetId);
+    const update = () => {
+      const selected = Array.from(inputs).some(i => i.checked && i.value === expectedValue);
+      target.style.display = selected ? 'block' : 'none';
+      if (!selected) target.value = '';
+    };
+    inputs.forEach(inp => inp.addEventListener('change', update));
+  }
+
+  function toggleIndispensableFurniture() {
+    const radios = document.querySelectorAll('input[name="keep_furniture"]');
+    const group = document.getElementById('indispensable_furniture_group');
+    const update = () => {
+      const val = document.querySelector('input[name="keep_furniture"]:checked')?.value || '';
+      group.style.display = val.startsWith('Sim') ? 'block' : 'none';
+      if (!val.startsWith('Sim')) {
+        const ta = group.querySelector('textarea[name="indispensable_furniture"]');
+        if (ta) ta.value = '';
+      }
+    };
+    radios.forEach(r => r.addEventListener('change', update));
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    toggleDisplay('project_reason', 'Outro motivo', 'project_reason_other');
+    toggleByCheckboxGroup('project_rooms', 'Outros', 'project_rooms_other');
+    toggleByCheckboxGroup('style', 'Outro', 'style_other');
+    toggleByCheckboxGroup('activities', 'Outros', 'activities_other');
+    toggleIndispensableFurniture();
+  });
+
+  function collectCheckedValues(name) {
+    return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(i => i.value);
+  }
+
+  function sendEmail() {
+    const data = {};
+    // coletar os 6 formulários + 5b
+    const ids = ['form-stage1','form-stage2','form-stage3','form-stage4','form-stage5','form-stage5b','form-stage6'];
+    ids.forEach(fid => {
+      const currentForm = document.getElementById(fid);
+      if (!currentForm) return;
+      const formData = new FormData(currentForm);
+      for (let [key, value] of formData.entries()) {
+        // vamos evitar sobrepor checkboxes: trataremos alguns campos depois
+        data[key] = value;
+      }
+    });
+
+    // campos de múltipla seleção
+    data['project_rooms'] = collectCheckedValues('project_rooms').join(', ');
+    data['style'] = collectCheckedValues('style').join(', ');
+    data['activities'] = collectCheckedValues('activities').join(', ');
+
+    // incluir "outros" quando presentes
+    if (document.getElementById('project_reason_other')?.value) {
+      data['project_reason'] = `${data['project_reason']} — ${document.getElementById('project_reason_other').value}`;
+    }
+    if (document.getElementById('project_rooms_other')?.value) {
+      data['project_rooms'] = `${data['project_rooms']}${data['project_rooms'] ? ', ' : ''}${document.getElementById('project_rooms_other').value}`;
+    }
+    if (document.getElementById('style_other')?.value) {
+      data['style'] = `${data['style']}${data['style'] ? ', ' : ''}${document.getElementById('style_other').value}`;
+    }
+    if (document.getElementById('activities_other')?.value) {
+      data['activities'] = `${data['activities']}${data['activities'] ? ', ' : ''}${document.getElementById('activities_other').value}`;
+    }
+
+    emailjs.send('seu_service_id', 'seu_template_id', data)
+      .then(() => showNextBox('box7'))
+      .catch(err => {
+        console.error(err);
+        alert('Ocorreu um erro ao enviar. Tente novamente.');
+      });
+  }
 </script>
-				
+
 </body>
-
 </html>
-
