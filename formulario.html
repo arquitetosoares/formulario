@@ -471,47 +471,28 @@
 		  text-decoration: underline;
 		}
 
-		/* ===== Ajustes SOMENTE no mobile ===== */
+		/* ===== Mobile: largura levemente afastada e altura um pouco maior ===== */
 		@media (max-width: 768px) {
-		  /* 1) Evita rolagem lateral e garante largura fluida */
-		  html, body { overflow-x: hidden; }
-		  .container { 
-			max-width: 100%;
-			padding: 16px;                /* padding menor no mobile */
-			
-			/* 2) Tira a rolagem interna da etapa (deixa rolar a página) */
-			max-height: none !important;
-			overflow: visible !important;
+		  .container {
+			/* LARGURA: ocupa ~92% da tela, centralizado (afasta só um pouco das laterais) */
+			width: 92vw;
+			max-width: 640px;
+			margin: 16px auto;         /* centralizado com respiro mínimo no topo/baixo */
+			padding: 16px;
+			box-sizing: border-box;
 
-			/* 3) Reserva espaço para a logo no fim */
-			padding-bottom: 100px;        /* ajuste se sua logo for maior/menor */
+			/* ALTURA: um pouco maior, mas sem ocupar a tela toda */
+			min-height: 72vh;          /* ajuste fino: 70–78vh conforme preferir */
+			max-height: 86vh;          /* evita virar “tela cheia” */
+			overflow-y: auto;          /* rola por dentro só se realmente precisar */
+			overflow-x: hidden;
+			border-radius: 14px;       /* opcional, mantém seu visual */
 		  }
 
-		  /* 4) Inputs nunca passam da largura */
-		  input[type="text"],
-		  input[type="email"],
-		  input[type="tel"],
-		  textarea,
-		  select { 
-			width: 100%;
-			box-sizing: border-box; 
-		  }
-
-		  /* 5) Imagens e grid não estouram a tela */
+		  /* Garantir que nada estoure a largura */
+		  input[type="text"], input[type="email"], input[type="tel"],
+		  textarea, select { width: 100%; box-sizing: border-box; }
 		  img { max-width: 100%; height: auto; display: block; }
-		  .style-grid { grid-template-columns: 1fr; }  /* 1 coluna no mobile */
-		}
-
-		/* (Opcional – se a sua logo estiver em um contêiner próprio no fim da página) */
-		.footer-logo {
-		  display: flex;
-		  justify-content: center;
-		  padding: 14px 0;
-		  /* Deixe fixa/pegajosa se quiser que fique sempre visível sem cobrir conteúdo */
-		  position: sticky;      /* cola no fundo quando chegar lá */
-		  bottom: 0;
-		  background: linear-gradient(to top, rgba(15,39,64,0.95), rgba(15,39,64,0));
-		  z-index: 1;
 		}
 
 
