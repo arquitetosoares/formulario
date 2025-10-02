@@ -471,29 +471,56 @@
 		  text-decoration: underline;
 		}
 
-		/* ===== Mobile: largura levemente afastada e altura um pouco maior ===== */
-		@media (max-width: 768px) {
-		  .container {
-			/* LARGURA: ocupa ~92% da tela, centralizado (afasta só um pouco das laterais) */
-			width: 92vw;
-			max-width: 640px;
-			margin: 16px auto;         /* centralizado com respiro mínimo no topo/baixo */
-			padding: 16px;
-			box-sizing: border-box;
-
-			/* ALTURA: um pouco maior, mas sem ocupar a tela toda */
-			min-height: 72vh;          /* ajuste fino: 70–78vh conforme preferir */
-			max-height: 86vh;          /* evita virar “tela cheia” */
-			overflow-y: auto;          /* rola por dentro só se realmente precisar */
-			overflow-x: hidden;
-			border-radius: 14px;       /* opcional, mantém seu visual */
-		  }
-
-		  /* Garantir que nada estoure a largura */
-		  input[type="text"], input[type="email"], input[type="tel"],
-		  textarea, select { width: 100%; box-sizing: border-box; }
-		  img { max-width: 100%; height: auto; display: block; }
+		/* Mostra APENAS o passo com .visible */
+		.container:not(.visible) { 
+		  display: none !important;
 		}
+
+/* Mostra APENAS o passo com .visible */
+.container:not(.visible) { 
+  display: none !important;
+}
+
+/* A capa precisa de flex APENAS quando estiver ativa */
+#welcome-screen.container.visible {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+/* Mobile: largura e altura que você pediu (card central, sem tela cheia) */
+@media (max-width: 768px) {
+  .container.visible {
+    width: 92vw;
+    max-width: 640px;
+    margin: 16px auto;      /* leve respiro em cima/baixo */
+    padding: 16px;
+    box-sizing: border-box;
+
+    min-height: 72vh;       /* um pouco maior */
+    max-height: 86vh;       /* não ocupa a tela toda */
+    overflow-y: auto;       /* só rola por dentro se precisar */
+    overflow-x: hidden;
+    border-radius: 14px;
+  }
+
+  /* capa centralizada com as mesmas dimensões do card */
+  #welcome-screen.container.visible {
+    min-height: 72vh;
+    max-height: 86vh;
+  }
+
+  /* garantir que inputs/imagens nunca forcem largura */
+  input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+}
+
 
 
   </style>
