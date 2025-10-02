@@ -42,8 +42,8 @@
         .container {
             max-width: 700px;
             width: 100%;
-            max-height: 45vh;
-            padding: 80px 100px;
+            max-height: 50vh;
+            padding: 20px 100px 40px 100px;
             border: none;
             border-radius: 0px;
             text-align: left;
@@ -71,16 +71,24 @@
 
         form#form-stage4 > div { margin: 10px 0 30px 0; }
         form#form-stage4 > div > label { line-height: 1.5; }
-        form#form-stage3 > div { margin-top: 10px; }
+        form#form-stage3 > div { margin-top: 30px; margin-bottom: 30px; }
         form#form-stage5 > div { margin-top: 10px; }
+		form#form-stage5b > button { margin-top: 40px; }
         form#form-stage5 > div > label { line-height: 1.5; }
-        form#form-stage3 > div > label { margin-bottom: 3px; }
-        form#form-stage2 > div { margin-bottom: 20px; }
-        form#form-stage2 > div > label { padding-top: 10px; font-weight: 400; }
+        form#form-stage2 > div { margin-bottom: 30px; }
+        form#form-stage2 > div > label { padding-top: 5px; font-weight: 400; }
         form > button { margin-top: 20px; }
+		form > label {
+			margin-bottom: 15px;
+		}
 
-        label { font-weight: 500; }
+        label { font-weight: 500; font-size: 19px; }
         .subtext { font-weight: 100; font-style: italic; margin: 0 0 8px 0; color: #a0a0a0; }
+		
+		.option-group > .inline-option {
+			padding-top: 5px;
+			font-weight: 400;
+		}
 
         input[type="text"], input[type="email"], textarea {
             width: 100%;
@@ -89,7 +97,7 @@
             border-bottom: 1px solid #172e43;
             border-radius: 0px;
             font-weight: 400;
-            margin: 10px 0 30px 0;
+            margin: 10px 0 20px 0;
             background-color: #16324A;
             color: #e0e0e0;
         }
@@ -102,7 +110,7 @@
 		}
 		
         .option-group { display: grid; gap: 8px; }
-        .inline-option { display: inline-flex; align-items: center; gap: 8px; margin-right: 12px; }
+        .inline-option { display: inline-flex; align-items: center; gap: 5px; margin-right: 12px; font-size: 17px;}
 
         button {
             padding: 10px 30px;
@@ -136,7 +144,7 @@
 
         #welcome-screen > h2 > i { font-weight: 200; }
         #welcome-screen > button { margin-top: 40px; }
-        #welcome-screen p {
+        #welcome-screen p, #form-stage6 p {
 			line-height: 1.5;
 			letter-spacing: 0.5px;
 			font-size: 18px;
@@ -169,6 +177,185 @@
             .up-button { right: 50px; }
             .down-button { right: 10px; }
         }
+		
+		/* Firefox */
+		.container {
+		  /* deixa mais fina e define cores (thumb / trilha) */
+		  scrollbar-width: thin;
+		  scrollbar-color: #ffffff3b #1c3f5d; /* thumb / track */
+		}
+
+		/* Chromium/WebKit (Chrome, Edge, Opera, Safari desktop) */
+		.container::-webkit-scrollbar {
+		  width: 12px;
+		}
+
+		.container::-webkit-scrollbar-track {
+		  background: #0f2740; /* cor da trilha */
+		}
+
+		.container::-webkit-scrollbar-thumb {
+		  background-color: #2e8fff; /* cor do thumb */
+		  border-radius: 20px;
+		  border: 3px solid #0f2740; /* cria “respiro” */
+		}
+
+		/* (Opcional) só quando visível */
+		.container.visible::-webkit-scrollbar-thumb {
+		  /* se quiser variar quando a etapa está ativa */
+		}
+
+		/* GRID de estilos (2 colunas no desktop, 1 no mobile) */
+		.style-grid {
+		  display: grid;
+		  grid-template-columns: repeat(2, minmax(0, 1fr));
+		  gap: 16px;
+		  margin-top: 10px;
+		}
+
+		/* Card do estilo */
+		.style-card {
+		  position: relative;
+		  border: 1px solid #1f3a54;
+		  border-radius: 12px;
+		  overflow: hidden;
+		  background: #0f2740; /* tom do seu tema */
+		  transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+		}
+
+		/* torna toda a área clicável */
+		.style-card input {
+		  position: absolute;
+		  inset: 0;
+		  opacity: 0;
+		  cursor: pointer;
+		}
+
+		/* conteúdo visual do card */
+		.style-card .content {
+		  display: flex;
+		  flex-direction: column;
+		}
+
+		.style-card .title {
+		  font-weight: 600;
+		  padding: 12px 14px 8px 14px;
+		  color: #e0e0e0;
+		}
+
+		.style-card img {
+		  width: 100%;
+		  height: 140px;            /* não gigante */
+		  object-fit: cover;
+		  display: block;
+		  filter: brightness(0.9);
+		}
+
+		/* feedback ao passar o mouse */
+		.style-card:hover {
+		  transform: translateY(-1px);
+		  border-color: #2e8fff;
+		  box-shadow: 0 0 0 2px rgba(46,143,255,0.15) inset;
+		}
+
+		/* estado selecionado */
+		.style-card input:checked ~ .content,
+		.style-card:has(input:checked) {
+		  border-color: #2e8fff;
+		  box-shadow: 0 0 0 2px rgba(46,143,255,0.35) inset;
+		}
+
+		/* mobile: 1 coluna */
+		@media (max-width: 768px) {
+		  .style-grid { grid-template-columns: 1fr; }
+		  .style-card img { height: 120px; }
+		}
+
+		/* === Cards de estilo: título sobre a imagem === */
+		.style-card {
+		  position: relative;
+		  border: 1px solid #1f3a54;
+		  border-radius: 12px;
+		  overflow: hidden;
+		  background: transparent;      /* tira a “faixa” azul do topo */
+		}
+
+		.style-card .content {
+		  position: relative;
+		}
+
+		.style-card img {
+		  width: 100%;
+		  height: 160px;                /* altura fixa, ajusta se quiser maior/menor */
+		  object-fit: cover;
+		  display: block;
+		}
+
+		.style-card .content::after {
+		  content: "";
+		  position: absolute;
+		  left: 0; right: 0; bottom: 0;
+		  height: 55%;
+		  pointer-events: none;
+		  background: linear-gradient(
+			to top,
+			rgba(0,0,0,0.45),
+			rgba(0,0,0,0) 70%
+		  );
+		}
+
+		.style-card .title {
+		  position: absolute;
+		  left: 12px;
+		  right: 12px;
+		  bottom: 10px;
+		  margin: 0;
+		  padding: 4px 6px;
+		  font-weight: 700;
+		  color: #ffffff;
+		  text-shadow: 0 1px 2px rgba(0,0,0,0.35); /* sombra leve */
+		  background: transparent;
+		}
+
+		.style-card:hover {
+		  transform: translateY(-1px);
+		  border-color: #2e8fff;
+		  box-shadow: 0 0 0 2px rgba(46,143,255,0.15) inset;
+		}
+
+		.style-card:has(input:checked) {
+		  border-color: #2e8fff;
+		  box-shadow: 0 0 0 2px rgba(46,143,255,0.35) inset;
+		}
+
+		@media (max-width: 768px) {
+		  .style-card img { height: 140px; }
+		}
+
+		/* Garantir hierarquia de camadas no card */
+		.style-card .content { position: relative; }
+
+		.style-card .content::after {
+		  content: "";
+		  position: absolute;
+		  left: 0; right: 0; bottom: 0;
+		  height: 55%;
+		  background: linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0) 70%);
+		  z-index: 1;                 /* gradiente abaixo do texto */
+		  pointer-events: none;       /* não intercepta clique */
+		}
+
+		.style-card .title {
+		  position: absolute;
+		  left: 12px;
+		  right: 12px;
+		  bottom: 10px;
+		  color: #fff;
+		  font-weight: 600;
+		  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+		  z-index: 2;                 /* texto acima do gradiente */
+		}
+
   </style>
 </head>
 <body>
@@ -189,7 +376,7 @@
 
 <!-- 1. Dados básicos -->
 <div id="box1" class="container">
-  <h2>Primeiro, seus dados básicos</h2>
+  <h2>Pra começar, só algumas informações rápidas sobre você 👋</h2>
   <form id="form-stage1">
     <label>Qual o seu nome?</label>
     <input type="text" name="user_name" placeholder="Seu nome" required>
@@ -244,16 +431,73 @@
   <h2>Show! Vamos falar de estilo 🎨</h2>
   <form id="form-stage3">
     <label>Olhe essas opções de estilos (vou colocar imagens no formulário depois) e me diga com quais você mais se identifica:</label>
-    <div class="option-group">
-      <label class="inline-option"><input type="checkbox" name="style" value="Moderno / Minimalista"> Moderno / Minimalista</label>
-      <label class="inline-option"><input type="checkbox" name="style" value="Clássico / Sofisticado"> Clássico / Sofisticado</label>
-      <label class="inline-option"><input type="checkbox" name="style" value="Industrial / Urbano"> Industrial / Urbano</label>
-      <label class="inline-option"><input type="checkbox" name="style" value="Rústico / Aconchegante"> Rústico / Aconchegante</label>
-      <label class="inline-option"><input type="checkbox" name="style" value="Escandinavo / Neutro"> Escandinavo / Neutro</label>
-      <label class="inline-option"><input type="checkbox" name="style" value="Colorido / Criativo"> Colorido / Criativo</label>
-      <label class="inline-option"><input type="checkbox" name="style" value="Outro"> Outro</label>
-      <input type="text" id="style_other" name="style_outro" placeholder="Qual?" style="display:none;">
+<div class="style-grid">
+  <!-- Moderno / Minimalista -->
+  <label class="style-card">
+    <input type="checkbox" name="style" value="Moderno / Minimalista">
+    <div class="content">
+      <img src="https://arquitetosoares.github.io/formulario/moderno-minimalista.png" alt="Moderno / Minimalista">
+      <div class="title">Moderno / Minimalista</div>
     </div>
+  </label>
+
+  <!-- Clássico / Sofisticado -->
+  <label class="style-card">
+    <input type="checkbox" name="style" value="Clássico / Sofisticado">
+    <div class="content">
+      <img src="https://arquitetosoares.github.io/formulario/classico-sofisticado.png" alt="Clássico / Sofisticado">
+      <div class="title">Clássico / Sofisticado</div>
+    </div>
+  </label>
+
+  <!-- Industrial / Urbano -->
+  <label class="style-card">
+    <input type="checkbox" name="style" value="Industrial / Urbano">
+    <div class="content">
+      <img src="https://arquitetosoares.github.io/formulario/industrial-urbano.png" alt="Industrial / Urbano">
+      <div class="title">Industrial / Urbano</div>
+    </div>
+  </label>
+
+  <!-- Rústico / Aconchegante -->
+  <label class="style-card">
+    <input type="checkbox" name="style" value="Rústico / Aconchegante">
+    <div class="content">
+      <img src="https://arquitetosoares.github.io/formulario/rustico-aconchegante.png" alt="Rústico / Aconchegante">
+      <div class="title">Rústico / Aconchegante</div>
+    </div>
+  </label>
+
+  <!-- Escandinavo / Neutro -->
+  <label class="style-card">
+    <input type="checkbox" name="style" value="Escandinavo / Neutro">
+    <div class="content">
+      <img src="https://arquitetosoares.github.io/formulario/escandinavo-neutro.png" alt="Escandinavo / Neutro">
+      <div class="title">Escandinavo / Neutro</div>
+    </div>
+  </label>
+
+  <!-- Colorido / Criativo -->
+  <label class="style-card">
+    <input type="checkbox" name="style" value="Colorido / Criativo">
+    <div class="content">
+      <img src="https://arquitetosoares.github.io/formulario/colorido-criativo.png" alt="Colorido / Criativo">
+      <div class="title">Colorido / Criativo</div>
+    </div>
+  </label>
+
+<!-- Aqui volta a opção OUTRO como antes -->
+<div class="option-group" style="margin-top:5px;">
+  <label class="inline-option">
+    <input type="checkbox" name="style" value="Outro"> Outro
+  </label>
+  <input type="text" id="style_other" name="style_outro" placeholder="Qual?" style="display:none; margin-left:10px;">
+</div>
+</div>
+
+<!-- mantém o seu campo de "Outro" que aparece quando selecionado -->
+<input type="text" id="style_other" name="style_outro" placeholder="Qual?" style="display:none; margin-top:10px;">
+
 
     <label>Prefere ambientes mais claros e neutros, mais escuros e intimistas, ou coloridos e vibrantes?</label>
     <div class="option-group">
@@ -353,7 +597,7 @@
 <div id="box6" class="container">
   <h2>Pra fechar… ✍️</h2>
   <form id="form-stage6">
-    <label>Aqui é o espaço livre pra você colocar qualquer comentário ou detalhe que ache importante. Pode ser um desejo especial, uma preocupação, ou até uma ideia que surgiu agora.</label>
+    <p>Aqui é o espaço livre pra você colocar qualquer comentário ou detalhe que ache importante. Pode ser um desejo especial, uma preocupação, ou até uma ideia que surgiu agora.</p>
     <textarea name="observations"></textarea>
 
     <button type="button" onclick="sendEmail()">Finalizar</button>
@@ -371,7 +615,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">
 (function() {
-  emailjs.init({ publicKey: "SUA_PUBLIC_KEY" });
+  emailjs.init({ publicKey: "PFs7RwLNY5lV_9BH7" });
 })();
 </script>
 
@@ -475,7 +719,7 @@
       data['activities'] = `${data['activities']}${data['activities'] ? ', ' : ''}${document.getElementById('activities_other').value}`;
     }
 
-    emailjs.send('seu_service_id', 'seu_template_id', data)
+    emailjs.send('service_f0f57bc', 'template_9uqxmej', data)
       .then(() => showNextBox('box7'))
       .catch(err => {
         console.error(err);
