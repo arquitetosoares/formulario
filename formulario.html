@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   
   <style>
         body {
@@ -88,6 +88,14 @@
 		.option-group > .inline-option {
 			padding-top: 5px;
 			font-weight: 400;
+		}
+
+		#box7 > button {
+			margin-top: 30px;
+		}
+		
+		#box7 p {
+			margin: 6px 0;
 		}
 
         input[type="text"], input[type="email"], textarea {
@@ -261,7 +269,7 @@
 		/* estado selecionado */
 		.style-card input:checked ~ .content,
 		.style-card:has(input:checked) {
-		  border-color: #2e8fff;
+		  border-color: #ffffff;
 		  box-shadow: 0 0 0 2px rgba(46,143,255,0.35) inset;
 		}
 
@@ -274,7 +282,7 @@
 		/* === Cards de estilo: título sobre a imagem === */
 		.style-card {
 		  position: relative;
-		  border: 1px solid #1f3a54;
+		  border: 2px solid #1f3a54;
 		  border-radius: 12px;
 		  overflow: hidden;
 		  background: transparent;      /* tira a “faixa” azul do topo */
@@ -324,7 +332,7 @@
 		}
 
 		.style-card:has(input:checked) {
-		  border-color: #2e8fff;
+		  border-color: #ffffff;
 		  box-shadow: 0 0 0 2px rgba(46,143,255,0.35) inset;
 		}
 
@@ -356,6 +364,113 @@
 		  z-index: 2;                 /* texto acima do gradiente */
 		}
 
+		/* === Inputs consistentes no mobile === */
+		input[type="text"],
+		input[type="email"],
+		input[type="tel"],
+		textarea,
+		select {
+		  -webkit-appearance: none;
+		  appearance: none;
+		  background-color: #0f2740;     /* cor do campo (ajusta à sua paleta) */
+		  border: 1px solid #1f3a54;
+		  border-radius: 8px;
+		  color: #e0e0e0;
+		  width: 100%;
+		  padding: 12px 14px;
+		  line-height: 1.4;
+		  box-shadow: none;              /* remove sombras nativas do iOS */
+		  outline: none;
+		}
+
+		/* foco visível e no teu tema */
+		input:focus,
+		textarea:focus,
+		select:focus {
+		  border-color: #2e8fff;
+		  box-shadow: 0 0 0 2px rgba(46,143,255,0.25);
+		}
+
+		/* placeholder legível no fundo escuro */
+		input::placeholder,
+		textarea::placeholder {
+		  color: #b3c2d6;
+		  opacity: 1;
+		}
+
+		/* remove highlight azul no toque (Android) */
+		* {
+		  -webkit-tap-highlight-color: transparent;
+		}
+
+		/* iOS Safari / Chrome autofill (campo preenchido automatico) */
+		input:-webkit-autofill,
+		input:-webkit-autofill:focus {
+		  -webkit-text-fill-color: #e0e0e0;
+		  transition: background-color 9999s ease-out 0s;
+		  box-shadow: 0 0 0px 1000px #0f2740 inset; /* pinta o fundo do autofill */
+		  border: 1px solid #1f3a54;
+		}
+
+		/* Se estiver usando modo escuro global, previne “forçar” tema nos controles */
+		:root { color-scheme: light; } /* ou remova se quiser que o SO force dark nos controles */
+
+		/* Aviso do WhatsApp, mais contraste */
+		.whats-hint {
+		  margin-top: 10px;
+		  font-weight: 500;
+		  color: #eaf2ff;              /* mais claro que o texto normal */
+		}
+
+		.whats-hint a {
+		  color: #7fbdff;               /* link com contraste */
+		  text-decoration: none;
+		  border-bottom: 1px dashed rgba(127,189,255,.6);
+		}
+		.whats-hint a:hover {
+		  color: #a9d2ff;
+		  border-bottom-color: rgba(169,210,255,.95);
+		}
+	
+		#box7 {
+		  text-align: center;
+		}
+		
+		.contact-info {
+		  margin: 25px 0 40px 0;
+		  padding: 15px 0;
+		  font-size: 15px;
+		  line-height: 1.8;
+		  text-align: center;
+		}
+		.contact-info p {
+		  margin: 6px 0;
+		}
+		.contact-info a {
+		  color: #7fbdff;
+		  text-decoration: none;
+		  font-weight: 500;
+		}
+		.contact-info a:hover {
+		  text-decoration: underline;
+		  color: #a9d2ff;
+		}
+
+		.credit p {
+		  margin-top: 25px;
+		  font-size: 15px;
+		  color: rgba(255,255,255,0.5);
+		  text-align: center;
+		}
+		.credit a {
+		  color: rgba(255,255,255,0.7);
+		  text-decoration: none;
+		}
+		.credit a:hover {
+		  color: #7fbdff;
+		  text-decoration: underline;
+		}
+
   </style>
 </head>
 <body>
@@ -379,15 +494,15 @@
   <h2>Pra começar, só algumas informações rápidas sobre você 👋</h2>
   <form id="form-stage1">
     <label>Qual o seu nome?</label>
-    <input type="text" name="user_name" placeholder="Seu nome" required>
+    <input type="text"  name="user_name"        placeholder="Seu nome" required>
 
     <label>Pode me passar um e-mail e WhatsApp pra contato?</label>
-    <input type="email" name="user_email" placeholder="email@email.com" required>
-    <input type="text" name="user_phone" placeholder="(DDD) 99999-9999" required>
-
+	<input type="email" name="user_email"       placeholder="email@email.com" required>
+	<input type="tel" name="user_phone" placeholder="(DDD) 99999-9999" required="" style="    margin-bottom: 20px;">
     <label>Onde fica o imóvel que vamos trabalhar? (cidade/bairro já ajuda)</label>
-    <input type="text" name="project_address" placeholder="Cidade / Bairro">
-    <button type="button" onclick="showNextBox('box2')">Próxima Etapa</button>
+    <input type="text"  name="project_address"  placeholder="Cidade / Bairro" required>
+    <button type="button" onclick="nextIfValid('form-stage1','box2')">Próxima Etapa</button>
+
   </form>
 </div>
 
@@ -397,7 +512,7 @@
   <form id="form-stage2">
     <label>Por que você decidiu reformar ou decorar agora?</label>
     <div class="option-group">
-      <label class="inline-option"><input type="radio" name="project_reason" value="Quero modernizar"> Quero modernizar</label>
+      <label class="inline-option"><input type="radio" name="project_reason" value="Quero modernizar" required> Quero modernizar</label>
       <label class="inline-option"><input type="radio" name="project_reason" value="Quero mais funcionalidade"> Quero mais funcionalidade</label>
       <label class="inline-option"><input type="radio" name="project_reason" value="Quero deixar mais bonito"> Quero deixar mais bonito</label>
       <label class="inline-option"><input type="radio" name="project_reason" value="Outro motivo"> Outro motivo</label>
@@ -417,12 +532,13 @@
     </div>
 
     <label>Se tivesse que escolher UMA coisa que não pode faltar, qual seria?</label>
-    <textarea name="must_have" placeholder=""></textarea>
+    <textarea name="must_have"     required></textarea>
 
     <label>E o que você definitivamente não quer no seu projeto?</label>
-    <textarea name="must_not_have" placeholder=""></textarea>
+    <textarea name="must_not_have" required></textarea>
 
-    <button type="button" onclick="showNextBox('box3')">Próxima Etapa</button>
+    <button type="button" onclick="nextIfValid('form-stage2','box3')">Próxima Etapa</button>
+
   </form>
 </div>
 
@@ -501,17 +617,20 @@
 
     <label>Prefere ambientes mais claros e neutros, mais escuros e intimistas, ou coloridos e vibrantes?</label>
     <div class="option-group">
-      <label class="inline-option"><input type="radio" name="colors_pref" value="Claros e neutros"> Claros e neutros</label>
+      <label class="inline-option"><input type="radio" name="colors_pref" value="Claros e neutros" required> Claros e neutros</label>
       <label class="inline-option"><input type="radio" name="colors_pref" value="Escuros e intimistas"> Escuros e intimistas</label>
       <label class="inline-option"><input type="radio" name="colors_pref" value="Coloridos e vibrantes"> Coloridos e vibrantes</label>
     </div>
 
     <label>Tem alguma cor que você ama? E alguma que você não suporta?</label>
-    <textarea name="colors_likes_dislikes" placeholder=""></textarea>
+    <textarea name="colors_likes_dislikes" required></textarea>
 
-    <p class="subtext">Ah, se já tiver imagens de referência, depois você me manda pelo WhatsApp, combinado? 📲</p>
+    <p class="whats-hint">
+	  Ah, se já tiver imagens de referência, me chama no <a id="wa-link" href="#" target="_blank" rel="noopener">WhatsApp</a> 📲
+	</p>
 
-    <button type="button" onclick="showNextBox('box4')">Próxima Etapa</button>
+    <button type="button" onclick="nextIfValid('form-stage3','box4')">Próxima Etapa</button>
+
   </form>
 </div>
 
@@ -520,14 +639,14 @@
   <h2>Sua rotina no espaço 🏡</h2>
   <form id="form-stage4">
     <label>Quantas pessoas moram na casa? (pode colocar as idades, ajuda bastante!)</label>
-    <textarea name="residents"></textarea>
+    <textarea name="residents" required></textarea>
 
     <label>Tem pets? Se sim, quais?</label>
-    <textarea name="pets"></textarea>
+    <textarea name="pets"      required></textarea>
 
     <label>Vocês costumam receber visitas com frequência?</label>
     <div class="option-group">
-      <label class="inline-option"><input type="radio" name="guests" value="Sim"> Sim</label>
+      <label class="inline-option"><input type="radio" name="guests" value="Sim" required> Sim</label>
       <label class="inline-option"><input type="radio" name="guests" value="Não"> Não</label>
     </div>
 
@@ -554,7 +673,8 @@
       <textarea name="indispensable_furniture"></textarea>
     </div>
 
-    <button type="button" onclick="showNextBox('box5')">Próxima Etapa</button>
+    <button type="button" onclick="nextIfValid('form-stage4','box5')">Próxima Etapa</button>
+
   </form>
 </div>
 
@@ -563,19 +683,20 @@
   <h2>Dinheiro e prazo 💰</h2>
   <form id="form-stage5">
     <label>Tem ideia de quando pretende começar o projeto?</label>
-    <input type="text" name="start_date" placeholder="Mês/Ano">
+    <input type="text" name="start_date" placeholder="Mês/Ano" required>
 
     <label>Existe alguma data limite (ex: mudança, evento, etc.)?</label>
-    <input type="text" name="deadline" placeholder="Descreva aqui">
+    <input type="text" name="deadline"   placeholder="Descreva aqui" required>
 
     <label>Pensando no investimento, você diria que está buscando algo mais:</label>
     <div class="option-group">
-      <label class="inline-option"><input type="radio" name="budget" value="Econômico"> Econômico</label>
+      <label class="inline-option"><input type="radio" name="budget" value="Econômico" required> Econômico</label>
       <label class="inline-option"><input type="radio" name="budget" value="Intermediário"> Intermediário</label>
       <label class="inline-option"><input type="radio" name="budget" value="Alto padrão"> Alto padrão</label>
     </div>
 
-    <button type="button" onclick="showNextBox('box5b')">Próxima Etapa</button>
+    <button type="button" onclick="nextIfValid('form-stage5','box5b')">Próxima Etapa</button>
+
   </form>
 </div>
 
@@ -585,11 +706,12 @@
   <form id="form-stage5b">
     <label>Você teria disponibilidade para uma reunião online com um dos nossos arquitetos para alinharmos esse briefing?</label>
     <div class="option-group">
-      <label class="inline-option"><input type="radio" name="meeting" value="Sim, com certeza"> Sim, com certeza</label>
+      <label class="inline-option"><input type="radio" name="meeting" value="Sim, com certeza" required> Sim, com certeza</label>
       <label class="inline-option"><input type="radio" name="meeting" value="Talvez, dependendo do horário"> Talvez, dependendo do horário</label>
       <label class="inline-option"><input type="radio" name="meeting" value="Prefiro alinhar só por mensagens"> Prefiro alinhar só por mensagens</label>
     </div>
-    <button type="button" onclick="showNextBox('box6')">Próxima Etapa</button>
+    <button type="button" onclick="nextIfValid('form-stage5b','box6')">Próxima Etapa</button>
+
   </form>
 </div>
 
@@ -605,12 +727,194 @@
 </div>
 
 <!-- Tela final -->
-<div id="box7" class="container" style="text-align: center;">
-  <h2>Uhuu! 🎉</h2>
-  <p>Obrigado por compartilhar todas as informações.</p>
-  <p>Em breve vamos entrar em contato para os próximos passos.</p>
-  <button onclick="showNextBox('welcome-screen')">Voltar ao Início</button>
+<div id="box7" class="container">
+  <h2>Formulário enviado com sucesso ✅</h2>
+  <p>Nossa equipe vai analisar e logo entraremos em contato com você.</p>
+
+  <div class="contact-info">
+    <p>
+      <a href="mailto:arquiteto.soares@gmail.com">arquiteto.soares@gmail.com</a>
+    </p>
+    <p>
+      <a href="https://instagram.com/marcossoaresarquitetura" target="_blank" rel="noopener">
+        @marcossoaresarquitetura
+      </a>
+    </p>
+    <p>
+      <a href="https://wa.me/5521975902315" target="_blank" rel="noopener">
+        +55 21 97590-2315 (WhatsApp)
+      </a>
+    </p>
+  </div>
+
+  <div class="credit">
+    <p>
+      <small>Desenvolvido por <a href="https://nicolasneves.com.br" target="_blank" rel="noopener">Nícolas Neves</a></small>
+    </p>
+  </div>
 </div>
+
+
+<script>
+  // exige que pelo menos um radio do grupo esteja marcado
+  function requireOneRadio(name, msg) {
+    if (!document.querySelector(`input[name="${name}"]:checked`)) {
+      alert(msg); return false;
+    }
+    return true;
+  }
+
+  // exige que pelo menos um checkbox do grupo esteja marcado
+  function requireOneCheckbox(name, msg) {
+    const any = Array.from(document.querySelectorAll(`input[name="${name}"]`)).some(i => i.checked);
+    if (!any) { alert(msg); return false; }
+    return true;
+  }
+
+  // exige valor quando o campo está visível
+  function requireIfVisible(inputOrTextarea, msg) {
+    if (!inputOrTextarea) return true;
+    const visible = !!(inputOrTextarea.offsetParent !== null);
+    if (visible && !inputOrTextarea.value.trim()) {
+      alert(msg);
+      inputOrTextarea.focus();
+      return false;
+    }
+    return true;
+  }
+
+  // Valida o form atual e só avança se estiver ok
+  function nextIfValid(formId, nextBoxId) {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    // valida campos nativos 'required'
+    if (!form.reportValidity()) return;
+
+    // validações específicas por etapa
+    switch (formId) {
+      case 'form-stage1': {
+        // já está coberto por required (nome, email, tel, endereço)
+        break;
+      }
+      case 'form-stage2': {
+        if (!requireOneRadio('project_reason', 'Selecione um motivo da transformação.')) return;
+
+        // "Outro motivo" precisa de texto
+        const reasonSel = document.querySelector('input[name="project_reason"]:checked');
+        if (reasonSel && reasonSel.value === 'Outro motivo') {
+          const other = document.getElementById('project_reason_other');
+          if (!requireIfVisible(other, 'Informe o "Outro motivo".')) return;
+        }
+
+        // ambientes: ao menos 1
+        if (!requireOneCheckbox('project_rooms', 'Selecione ao menos um ambiente.')) return;
+
+        // "Outros" ambientes precisam de texto
+        const roomsOtherChecked = Array.from(document.querySelectorAll('input[name="project_rooms"]:checked')).some(i => i.value === 'Outros');
+        if (roomsOtherChecked) {
+          const other = document.getElementById('project_rooms_other');
+          if (!requireIfVisible(other, 'Descreva os "Outros" ambientes.')) return;
+        }
+
+        // must_have e must_not_have já estão como required
+        break;
+      }
+      case 'form-stage3': {
+        // estilos: ao menos 1 (cards + "Outro")
+        if (!requireOneCheckbox('style', 'Selecione pelo menos um estilo.')) return;
+
+        // "Outro" estilo precisa de texto
+        const styleOtherChecked = Array.from(document.querySelectorAll('input[name="style"]:checked')).some(i => i.value === 'Outro');
+        if (styleOtherChecked) {
+          const other = document.getElementById('style_other');
+          if (!requireIfVisible(other, 'Descreva o "Outro" estilo.')) return;
+        }
+
+        // colors_pref já possui required em um dos rádios
+        // colors_likes_dislikes já está required
+        break;
+      }
+      case 'form-stage4': {
+        // residents & pets required já cobrem
+        if (!requireOneRadio('guests', 'Informe se vocês recebem visitas.')) return;
+
+        // atividades: ao menos 1
+        if (!requireOneCheckbox('activities', 'Selecione as atividades do dia a dia.')) return;
+
+        // "Outros" atividades precisam de texto
+        const actOtherChecked = Array.from(document.querySelectorAll('input[name="activities"]:checked')).some(i => i.value === 'Outros');
+        if (actOtherChecked) {
+          const other = document.getElementById('activities_other');
+          if (!requireIfVisible(other, 'Descreva as outras atividades.')) return;
+        }
+
+        if (!requireOneRadio('keep_furniture', 'Selecione a opção sobre os móveis.')) return;
+
+        // se marcou "Sim...", o textarea vira obrigatório
+        const keep = document.querySelector('input[name="keep_furniture"]:checked');
+        if (keep && keep.value.startsWith('Sim')) {
+          const ind = document.querySelector('textarea[name="indispensable_furniture"]');
+          if (!requireIfVisible(ind, 'Liste os móveis indispensáveis.')) return;
+        }
+        break;
+      }
+      case 'form-stage5': {
+        if (!requireOneRadio('budget', 'Escolha o perfil de investimento.')) return;
+        // start_date e deadline já estão required
+        break;
+      }
+      case 'form-stage5b': {
+        if (!requireOneRadio('meeting', 'Selecione sua disponibilidade para reunião.')) return;
+        break;
+      }
+    }
+
+    // se passou em tudo, avança
+    showNextBox(nextBoxId);
+  }
+</script>
+
+<script>
+  // >>> CONFIGURE AQUI seu número do WhatsApp no formato internacional, só dígitos:
+  // Ex.: Brasil (21) 9 8765-4321  =>  5521987654321
+  const WA_NUMBER = '5521988233083';
+
+  function buildWhatsAppURL() {
+    const name = document.querySelector('input[name="user_name"]')?.value?.trim() || '';
+    // Mensagem que vai pré-preenchida no WhatsApp:
+    const msg = name
+      ? `Oi, me chamo ${name}. Estou preenchendo o Pré-Briefing e quero te enviar imagens de referência.`
+      : `Oi! Estou preenchendo o Pré-Briefing e quero te enviar imagens de referência.`;
+    const base = WA_NUMBER ? `https://wa.me/${WA_NUMBER}` : `https://wa.me/`;
+    return `${base}?text=${encodeURIComponent(msg)}`;
+  }
+
+  function updateWhatsLink() {
+    const a = document.getElementById('wa-link');
+    if (!a) return;
+    a.href = buildWhatsAppURL();
+  }
+
+  // Atualiza o link quando a página carrega e sempre que o nome mudar
+  window.addEventListener('DOMContentLoaded', () => {
+    updateWhatsLink();
+    const nameInput = document.querySelector('input[name="user_name"]');
+    if (nameInput) {
+      nameInput.addEventListener('input', updateWhatsLink);
+      nameInput.addEventListener('blur', updateWhatsLink);
+    }
+  });
+
+  // (Opcional) Toda troca de etapa também atualiza, caso a pessoa preencha depois
+  const _oldShowNextBox = window.showNextBox;
+  window.showNextBox = function(nextId) {
+    updateWhatsLink();
+    _oldShowNextBox(nextId);
+  };
+</script>
+
+
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">
@@ -686,6 +990,65 @@
     return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(i => i.value);
   }
 
+  /* ================================
+     NOVO: imagens dos estilos no e-mail
+     ================================ */
+
+  // Mapa estilo -> URL (iguais às imagens usadas no grid do box3)
+  const STYLE_IMAGES = {
+    'Moderno / Minimalista': 'https://arquitetosoares.github.io/formulario/moderno-minimalista.png',
+    'Clássico / Sofisticado': 'https://arquitetosoares.github.io/formulario/classico-sofisticado.png',
+    'Industrial / Urbano':   'https://arquitetosoares.github.io/formulario/industrial-urbano.png',
+    'Rústico / Aconchegante':'https://arquitetosoares.github.io/formulario/rustico-aconchegante.png',
+    'Escandinavo / Neutro':  'https://arquitetosoares.github.io/formulario/escandinavo-neutro.png',
+    'Colorido / Criativo':   'https://arquitetosoares.github.io/formulario/colorido-criativo.png'
+    // "Outro" sem imagem
+  };
+
+  // Monta HTML da galeria (tabelas 2 colunas para compatibilidade de e-mail)
+  function buildStyleGalleryHTML(selectedStyles) {
+    if (!selectedStyles || !selectedStyles.length) return '';
+
+    const cards = selectedStyles.map((name) => {
+      const src = STYLE_IMAGES[name];
+		if (!src) {
+		  // Pega o texto do campo "Outro"
+		  const outroText = (document.getElementById('style_other')?.value || '').trim();
+		  const outroInfo = outroText ? `Estilo informado: ${outroText}` : 'Sem imagem.';
+
+		  return `
+			<td style="padding:6px;vertical-align:top;width:50%;">
+			  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border:1px solid #1f3a54;border-radius:10px;">
+				<tr><td style="padding:10px 12px;background:#0c2036;color:#eaf2ff;font-weight:700;font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif;">${name}</td></tr>
+				<tr><td style="padding:12px;color:#b8c7e6;font-size:13px;font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif;">${outroInfo}</td></tr>
+			  </table>
+			</td>`;
+		}
+
+      return `
+        <td style="padding:6px;vertical-align:top;width:50%;">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border:1px solid #1f3a54;border-radius:10px;overflow:hidden;">
+            <tr>
+              <td style="padding:10px 12px;background:#0c2036;color:#eaf2ff;font-weight:700;font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif;">${name}</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="${src}" alt="${name}" width="100%" style="display:block;width:100%;height:auto;">
+              </td>
+            </tr>
+          </table>
+        </td>`;
+    });
+
+    // Quebra em linhas de 2 colunas
+    let rows = '';
+    for (let i = 0; i < cards.length; i += 2) {
+      rows += `<tr>${cards[i]}${cards[i+1] || '<td style="padding:6px;width:50%;"></td>'}</tr>`;
+    }
+
+    return `<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">${rows}</table>`;
+  }
+
   function sendEmail() {
     const data = {};
     // coletar os 6 formulários + 5b
@@ -701,9 +1064,13 @@
     });
 
     // campos de múltipla seleção
-    data['project_rooms'] = collectCheckedValues('project_rooms').join(', ');
-    data['style'] = collectCheckedValues('style').join(', ');
-    data['activities'] = collectCheckedValues('activities').join(', ');
+    const roomsSelected   = collectCheckedValues('project_rooms');
+    const stylesSelected  = collectCheckedValues('style');
+    const actsSelected    = collectCheckedValues('activities');
+
+    data['project_rooms'] = roomsSelected.join(', ');
+    data['style']         = stylesSelected.join(', ');
+    data['activities']    = actsSelected.join(', ');
 
     // incluir "outros" quando presentes
     if (document.getElementById('project_reason_other')?.value) {
@@ -719,6 +1086,11 @@
       data['activities'] = `${data['activities']}${data['activities'] ? ', ' : ''}${document.getElementById('activities_other').value}`;
     }
 
+    // NOVO: galeria com imagens dos estilos selecionados (HTML para o EmailJS)
+    data['style_gallery'] = buildStyleGalleryHTML(stylesSelected);
+
+	console.log('Payload EmailJS:', data);
+	
     emailjs.send('service_f0f57bc', 'template_9uqxmej', data)
       .then(() => showNextBox('box7'))
       .catch(err => {
