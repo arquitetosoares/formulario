@@ -52,6 +52,8 @@
             display: none;
             z-index: 1;
             overflow-y: auto;
+			position: relative;
+			top: -20px;
         }
 
         .container.visible { display: block; }
@@ -500,8 +502,8 @@
     padding: 16px;
     box-sizing: border-box;
 
-    min-height: 72vh;       /* um pouco maior */
-    max-height: 86vh;       /* não ocupa a tela toda */
+    min-height: 55vh;       /* um pouco maior */
+    max-height: 60vh;       /* não ocupa a tela toda */
     overflow-y: auto;       /* só rola por dentro se precisar */
     overflow-x: hidden;
     border-radius: 14px;
@@ -521,7 +523,50 @@
   img { max-width: 100%; height: auto; display: block; }
 }
 
+.scroll-indicator {
+  position: fixed;
+  bottom: 130px; /* distância do fundo do container */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  color: #e0e0e0;
+  opacity: 0.7;
+  animation: bounce 1.5s infinite;
+  display: none; /* começa invisível */
+}
 
+.scroll-indicator img {
+  width: 22px;   /* ajusta o tamanho da seta */
+  height: auto;
+  opacity: 0.8;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 6px); }
+}
+
+/* Mostra só no mobile */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    display: block;
+  }
+}
+
+/* Alinhamento especial para as telas curtas */
+.container.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: none; /* remove limite */
+  overflow: hidden; /* sem scroll */
+  padding: 60px 40px;
+}
+.container.centered form {
+  width: 100%;
+  max-width: 500px;
+}
 
   </style>
 </head>
@@ -535,7 +580,7 @@
 <div class="logo-link"><a href="#"><img src="https://arquitetosoares.github.io/formulario/Logo-MS.svg" alt="Logo inferior" class="bottom-image"></a></div>
 
 <!-- Tela inicial -->
-<div id="welcome-screen" class="container visible">
+<div id="welcome-screen" class="container visible centered">
   <h2>Olá, seja bem-vindo! <i>Vamos começar?</i></h2>
   <p>Este <b>briefing</b> é o primeiro passo para criarmos um projeto com a sua cara. Suas respostas vão nos ajudar a entender seus desejos, necessidades e estilo, para que juntos possamos construir um espaço único e cheio de significado.</p>
   <button onclick="showNextBox('box1')">Começar</button>
@@ -545,6 +590,7 @@
 <div id="box1" class="container">
   <h2>Pra começar, só algumas informações rápidas sobre você 👋</h2>
   <form id="form-stage1">
+
     <label>Qual o seu nome?</label>
     <input type="text"  name="user_name"        placeholder="Seu nome" required>
 
@@ -554,8 +600,8 @@
     <label>Onde fica o imóvel que vamos trabalhar? (cidade/bairro já ajuda)</label>
     <input type="text"  name="project_address"  placeholder="Cidade / Bairro" required>
     <button type="button" onclick="nextIfValid('form-stage1','box2')">Próxima Etapa</button>
-
   </form>
+  <div class="scroll-indicator"><img src="https://arquitetosoares.github.io/formulario/seta.svg" alt="Seta para baixo"></div>
 </div>
 
 <!-- 2. Sobre o projeto -->
@@ -592,6 +638,7 @@
     <button type="button" onclick="nextIfValid('form-stage2','box3')">Próxima Etapa</button>
 
   </form>
+    <div class="scroll-indicator"><img src="https://arquitetosoares.github.io/formulario/seta.svg" alt="Seta para baixo"></div>
 </div>
 
 <!-- 3. Estilo e inspirações -->
@@ -684,6 +731,7 @@
     <button type="button" onclick="nextIfValid('form-stage3','box4')">Próxima Etapa</button>
 
   </form>
+    <div class="scroll-indicator"><img src="https://arquitetosoares.github.io/formulario/seta.svg" alt="Seta para baixo"></div>
 </div>
 
 <!-- 4. Rotina no espaço + móveis -->
@@ -728,6 +776,7 @@
     <button type="button" onclick="nextIfValid('form-stage4','box5')">Próxima Etapa</button>
 
   </form>
+    <div class="scroll-indicator"><img src="https://arquitetosoares.github.io/formulario/seta.svg" alt="Seta para baixo"></div>
 </div>
 
 <!-- 5. Investimento e prazo -->
@@ -750,10 +799,11 @@
     <button type="button" onclick="nextIfValid('form-stage5','box5b')">Próxima Etapa</button>
 
   </form>
+    <div class="scroll-indicator"><img src="https://arquitetosoares.github.io/formulario/seta.svg" alt="Seta para baixo"></div>
 </div>
 
 <!-- 6. Disponibilidade para reunião -->
-<div id="box5b" class="container">
+<div id="box5b" class="container centered">
   <h2>🤝 Bora alinhar juntos?</h2>
   <form id="form-stage5b">
     <label>Você teria disponibilidade para uma reunião online com um dos nossos arquitetos para alinharmos esse briefing?</label>
@@ -768,7 +818,7 @@
 </div>
 
 <!-- 7. Observações finais -->
-<div id="box6" class="container">
+<div id="box6" class="container centered">
   <h2>Pra fechar… ✍️</h2>
   <form id="form-stage6">
     <p>Aqui é o espaço livre pra você colocar qualquer comentário ou detalhe que ache importante. Pode ser um desejo especial, uma preocupação, ou até uma ideia que surgiu agora.</p>
@@ -779,7 +829,7 @@
 </div>
 
 <!-- Tela final -->
-<div id="box7" class="container">
+<div id="box7" class="container centered">
   <h2>Formulário enviado com sucesso ✅</h2>
   <p>Nossa equipe vai analisar e logo entraremos em contato com você.</p>
 
@@ -930,7 +980,7 @@
 <script>
   // >>> CONFIGURE AQUI seu número do WhatsApp no formato internacional, só dígitos:
   // Ex.: Brasil (21) 9 8765-4321  =>  5521987654321
-  const WA_NUMBER = '5521988233083';
+  const WA_NUMBER = '5521975902315';
 
   function buildWhatsAppURL() {
     const name = document.querySelector('input[name="user_name"]')?.value?.trim() || '';
@@ -964,6 +1014,31 @@
     updateWhatsLink();
     _oldShowNextBox(nextId);
   };
+
+function handleScrollIndicator(container) {
+  const indicator = container.querySelector('.scroll-indicator');
+  if (!indicator) return;
+
+  // Só aparece se tiver rolagem
+  if (container.scrollHeight <= container.clientHeight) {
+    indicator.style.display = "none";
+    return;
+  } else {
+    indicator.style.display = "block";
+  }
+
+  container.addEventListener("scroll", () => {
+    const atBottom = container.scrollTop + container.clientHeight >= container.scrollHeight - 5;
+    if (container.scrollTop > 10 || atBottom) {
+      indicator.style.display = "none"; 
+    } else {
+      indicator.style.display = "block"; 
+    }
+  });
+}
+
+
+
 </script>
 
 
